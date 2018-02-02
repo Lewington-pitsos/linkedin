@@ -2,6 +2,7 @@ require 'capybara'
 require "capybara-webkit"
 
 require_relative 'login'
+require_relative '../helpers/screlper'
 
 Capybara.register_driver(:webkit) { |app| Capybara::Webkit::Driver.new(app, js_errors: false) }
 Capybara.javascript_driver = :webkit
