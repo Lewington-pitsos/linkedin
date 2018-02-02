@@ -8,6 +8,7 @@ Capybara.register_driver(:webkit) { |app| Capybara::Webkit::Driver.new(app, js_e
 Capybara.javascript_driver = :webkit
 Capybara.default_driver = :webkit
 Capybara.ignore_hidden_elements = false
+Capybara.current_driver = Capybara.javascript_driver
 
 class Session
 
