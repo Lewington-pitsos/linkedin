@@ -2,14 +2,13 @@ require_relative 'crawler'
 
 class Login < Crawler
 
-  @@login_link = 'https://www.linkedin.com/'
+  @@login_link = 'https://www.linkedin.com/uas/login'
   @@password = 'q1as1z2'
   @@email = 'idof@live.com.au'
 
-  @@email_id = "login-email"
-  @@pass_id = 'login-password'
-  @@submit_id = '#login-submit'
-  @@form_id = '.login-form'
+  @@email_id = "#session_key-login"
+  @@pass_id = '#session_password-login'
+  @@submit_id = '#btn-primary'
 
   def initialize(session, archivist)
     super(session, archivist)
@@ -28,13 +27,9 @@ class Login < Crawler
   def fill_details
     # fills on email and password fields and submits login form
     tputs "inputting login details"
-    self.session.fill_in(@@email_id, with: @email)
-    self.session.fill_in(@@pass_id, with: @@password)
-
-    # linkedin craftily made it impossible so click() the submit input (I suspect mouseover shinanigans)
-    self.session.execute_script("$('#{@@form_id}').submit()")
-    # for some reason triggering a click on the form submit input seemed to have no effect
-
+    self.session.find(@@email_id).set(@@email)
+    self.session.find(@@pass_id).set(@@password)
+    self.session.find(@@submit_id).click()
     # linkedin takes it's time to log us in
     sleep(8)
   end

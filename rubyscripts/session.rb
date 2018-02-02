@@ -19,4 +19,8 @@ class Session
     self.archivist = Archivist.new(db_name)
     self.login = Login.new(session, archivist)
   end
+
+  def login_phase()
+    login.login()
+  end
 end

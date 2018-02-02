@@ -1,22 +1,11 @@
-Run options: --seed 4013
+Run options: --seed 60541
 
 # Running:
 
-[09:52:41]: visiting https://www.linkedin.com/
-.[09:52:48]: inputting login details
-E
+[10:22:43]: visiting https://www.linkedin.com/uas/login
+.[10:22:48]: inputting login details
+.
 
-Finished in 7.128974s, 0.2805 runs/s, 0.4208 assertions/s.
+Finished in 16.041228s, 0.1247 runs/s, 0.5611 assertions/s.
 
-  1) Error:
-OfflineTests#test_b_login_fills_and_submits:
-Capybara::Webkit::InvalidResponseError: Javascript failed to execute
-    /home/lewington/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/capybara-webkit-1.14.0/lib/capybara/webkit/browser.rb:321:in `check'
-    /home/lewington/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/capybara-webkit-1.14.0/lib/capybara/webkit/browser.rb:221:in `command'
-    /home/lewington/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/capybara-webkit-1.14.0/lib/capybara/webkit/browser.rb:244:in `execute_script'
-    /home/lewington/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/capybara-webkit-1.14.0/lib/capybara/webkit/driver.rb:80:in `execute_script'
-    /home/lewington/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/capybara-2.8.1/lib/capybara/session.rb:560:in `execute_script'
-    /home/lewington/xxx/scrapers/linkedin/rubyscripts/login.rb:35:in `fill_details'
-    testing/online_test.rb:25:in `test_b_login_fills_and_submits'
-
-2 runs, 3 assertions, 0 failures, 1 errors, 0 skips
+2 runs, 9 assertions, 0 failures, 0 errors, 0 skips

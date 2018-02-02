@@ -17,12 +17,14 @@ class OfflineTests < Minitest::Test
 
   def test_a_login_visits_login_page
     @@login.visit_login_page()
-    assert_equal 'https://www.linkedin.com/', SESSION.session.current_url()
-    assert_match 'Be great at what you do', SESSION.session.html()
+    assert_equal 'https://www.linkedin.com/uas/login', SESSION.session.current_url()
+    assert_match /forgot password/i, SESSION.session.html()
   end
 
   def test_b_login_fills_and_submits
     @@login.fill_details()
-    assert_equal 'https://www.linkedin.com/feed/', SESSION.session.current_url()
+    assert_match'https://www.linkedin.com/feed/', SESSION.session.current_url()
+    assert_match /try premium/i, SESSION.session.html()
+    assert_match /me/i, SESSION.session.html()
   end
 end
