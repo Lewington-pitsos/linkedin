@@ -1,0 +1,69 @@
+# commands for creating the users and applicaitions tables
+
+CREATE TABLE users (
+  id serial,
+  email CHAR(60) NOT NULL,
+  password CHAR(30) NOT NULL,
+  resume_number VARCHAR NOT NULL,
+  PRIMARY KEY(id)
+);
+
+CREATE TABLE searches (
+  id serial,
+  link_number VARCHAR NOT NULL,
+  userId INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  PRIMARY KEY(id)
+);
+
+CREATE TABLE resumes (
+  id serial,
+  number BIGINT NOT NULL,
+  userId INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  PRIMARY KEY(id)
+);
+
+CREATE TABLE applied (
+  id serial,
+  job_id BIGINT NOT NULL,
+  date TIMESTAMP NOT NULL DEFAULT NOW(),
+  userId INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  PRIMARY KEY(id)
+);
+
+CREATE TABLE questions (
+  id serial,
+  question CHAR(250) NOT NULL,
+  answer CHAR(80) NOT NULL,
+  userId INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  PRIMARY KEY(id)
+);
+
+# commands for inserting entries into these tables
+
+INSERT INTO users (email, password)
+  VALUES ('lewington@student.unimelb.edu.au', 'q1as1z2');
+
+INSERT INTO users (email, password)
+  VALUES ('eloise1026@gmail.com', 'tmusdbb8');
+
+INSERT INTO applications (id, userId)
+  VALUES (666, 1);
+
+
+INSERT INTO resumes (number, userId)
+  VALUES (3590372, 1),
+         (3612732, 2);
+
+INSERT INTO searches (link_number, userId)
+ VALUES (604854, 1),
+        (613357, 2);
+
+INSERT INTO questions (question, answer, userId)
+  VALUES ('Question: What is the name of the first street I lived in?', 'colston', 1),
+    ('Question: What was the model of a car I learnt to drive in?', 'jaguar', 1),
+    ('Question: What was my favourite subject at school?', 'philosophy', 1);
+
+INSERT INTO questions (question, answer, userId)
+  VALUES ('Question: What was my favourite childhood book?', 'Where the Wild Things Are', 2),
+    ('Question: What is my mothers maiden name?', 'turner', 2),
+    ('Question: Who was your best friend in prep?', 'Sharna', 2);
