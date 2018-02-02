@@ -10,6 +10,9 @@ class Login < Crawler
   @@pass_id = '#session_password-login'
   @@submit_id = '#btn-primary'
 
+  @@default_search = 'https://www.linkedin.com/search/results/people/?origin=SWITCH_SEARCH_VERTICAL&page=10'
+  @@person_link_id = '.name.actor-name'
+
   def initialize(session, archivist)
     super(session, archivist)
   end
@@ -21,16 +24,27 @@ class Login < Crawler
 
   def visit_login_page
     tputs "visiting #{@@login_link}"
-    self.session.visit(@@login_link)
+    session.visit(@@login_link)
   end
 
   def fill_details
     # fills on email and password fields and submits login form
     tputs "inputting login details"
-    self.session.find(@@email_id).set(@@email)
-    self.session.find(@@pass_id).set(@@password)
-    self.session.find(@@submit_id).click()
+    session.find(@@email_id).set(@@email)
+    session.find(@@pass_id).set(@@password)
+    session.find(@@submit_id).click()
+
     # linkedin takes it's time to log us in
-    sleep(8)
+    sleep(3)
+  end
+
+  def search
+    session.visit(@@default_search)
+    tputs 'Search complete: currently on ' + session.url
+  end
+
+  def visit_first_person
+    session.first(@@person_link_id).click()
+    tputs 'Person visited, currently on ' + session.url
   end
 end

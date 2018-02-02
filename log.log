@@ -1,11 +1,11 @@
-Run options: --seed 60541
+Run options: --seed 31823
 
 # Running:
 
-[10:22:43]: visiting https://www.linkedin.com/uas/login
-.[10:22:48]: inputting login details
+[10:28:30]: visiting https://www.linkedin.com/uas/login
+.[10:28:35]: inputting login details
 .
 
-Finished in 16.041228s, 0.1247 runs/s, 0.5611 assertions/s.
+Finished in 11.503720s, 0.1739 runs/s, 0.7824 assertions/s.
 
 2 runs, 9 assertions, 0 failures, 0 errors, 0 skips
